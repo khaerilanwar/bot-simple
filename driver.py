@@ -11,8 +11,9 @@ class WebDriverManager(webdriver.Chrome):
     def __init__(self, options: Options = None, service: Service = None, keep_alive: bool = True) -> None:
         if not options:
             options = Options()
-            options.add_argument("--headless")
-            options.add_argument("--disable-gpu")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--headless=new")
         super().__init__(options, service, keep_alive)
 
     def wait_until(self, locator, timeout=10):
